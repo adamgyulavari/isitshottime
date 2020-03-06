@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    let isitshottime = new Date().getHours() > 18 && new Date().getHours() < 7 ? 'Yes' : 'No';
+    let meta = document.createElement('meta');
+    meta.setAttribute('property', 'og:title');
+    meta.setAttribute('content', isitshottime);
+    document.head.append(meta)
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:url" content="http://isitshottime.com">
+  <meta property="og:description" content="Is it shot time?">
+  <meta property="og:image" content="https://uploads-ssl.webflow.com/598435743262c800013158eb/598c28e3153f320001974cdf_green_fox_logo_full.svg" />
+  <title>Is Green Fox Academy canceled yet?</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Is it shot time?</h1>
+    <h2 id='wellIsIt'></h2>
+  </main>
+  <script>
+    wellIsIt.textContent = isitshottime;
+    wellIsIt.classList.add(isitshottime);
+  </script>
+</body>
+</html>
