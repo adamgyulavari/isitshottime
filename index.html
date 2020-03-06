@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <script>
-    let isitshottime = new Date().getHours() > 18 && new Date().getHours() < 7 ? 'Yes' : 'No';
+    let isitshottime = new Date().getHours() >= 18 || new Date().getHours() < 7 ? 'Yes' : 'No';
     let meta = document.createElement('meta');
     meta.setAttribute('property', 'og:title');
     meta.setAttribute('content', isitshottime);
