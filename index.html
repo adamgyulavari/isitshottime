@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    let isitshottime = new Date().getHours() >= 18 || new Date().getHours() < 7 ? 'Yes' : 'No';
-    let meta = document.createElement('meta');
-    meta.setAttribute('property', 'og:title');
-    meta.setAttribute('content', isitshottime);
-    document.head.append(meta);
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:url" content="https://isitshottime.com">
-  <meta property="og:description" content="Is it shot time?">
+  <meta property="og:title" content="Is it shot time?">
+  <meta property="og:description" content="Let's find out...">
   <meta property="og:image" content="https://isitshottime.com/shots.png" />
   <title>Is it shot time?</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -24,8 +18,19 @@
     <h2 id='wellIsIt'></h2>
   </main>
   <script>
-    wellIsIt.textContent = isitshottime;
-    wellIsIt.classList.add(isitshottime);
+    function setIt() {
+      const isitshottime = (new Date().getHours() >= 18 || new Date().getHours() < 7) ? 'Yes' : 'No';
+      wellIsIt.textContent = isitshottime;
+      wellIsIt.classList.add(isitshottime);
+    }
+    const prev = localStorage.getItem('previousVisit');
+    localStorage.setItem('previousVisit', new Date());
+    if (new Date(prev) > new Date(Date.now() - (10 * 60 * 1000))) {
+      wellIsIt.innerHTML = '<img src="not-again.jpg" alt="not again">';
+      wellIsIt.addEventListener('click', setIt);
+    } else {
+      setIt();
+    }
   </script>
 </body>
 </html>
